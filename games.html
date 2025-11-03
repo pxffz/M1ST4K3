@@ -23,7 +23,8 @@
       top: 25px;
       left: 50%;
       transform: translateX(-50%);
-      width: 400px;
+      width: auto;
+      padding: 0 20px;
       height: 60px;
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
@@ -31,6 +32,7 @@
       border: 1px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       gap: 15px;
@@ -131,12 +133,12 @@
       <span>10 Minutes Till Dawn</span>
     </div>
 
-  <div class="games-container">
     <div class="game-card" onclick="openGame('https://pxffz.github.io/M1ST4K3/games/12MB.html')">
       <img src="https://cdn.jsdelivr.net/gh/gn-math/covers@main/295.png" alt="12 Mini Battles">
       <span>12 Mini Battles</span>
     </div>
-    <!-- Add more games here by copying the game-card div -->
+
+    <!-- Add more game cards here -->
   </div>
 
   <script>
