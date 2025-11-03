@@ -23,30 +23,30 @@
     /* Top menu bar */
     .menu {
       position: fixed;
-      top: 20px;
+      top: 25px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80%;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      width: 350px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
       border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
       animation: borderGlow 2s infinite alternate;
     }
 
     /* Subtle border shine animation */
     @keyframes borderGlow {
       0% {
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
-                    0 0 10px rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
+                    0 0 10px rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
       }
       100% {
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.4),
-                    0 0 20px rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.6);
+                    0 0 20px rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
       }
     }
 
@@ -62,7 +62,7 @@
         0 0 20px #fff;
       animation: shine 2s infinite alternate;
       margin-bottom: 50px;
-      margin-top: 100px;
+      margin-top: 120px;
     }
 
     @keyframes shine {
