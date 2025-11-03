@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M1ST4K3</title>
-  <!-- Font Awesome for magnifying glass -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome v6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -19,7 +19,6 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Title styling */
     h1 {
       color: #fff;
       font-size: 6em;
@@ -39,7 +38,6 @@
       100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
     }
 
-    /* Search bar container */
     .search-container {
       display: flex;
       justify-content: center;
@@ -63,6 +61,8 @@
       backdrop-filter: blur(10px);
       color: #fff;
       font-size: 1.1em;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      transition: 0.3s;
     }
 
     .search-bar::placeholder {
@@ -81,6 +81,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
     }
 
     .custom-btn i {
@@ -88,8 +90,14 @@
       font-size: 1.2em;
     }
 
+    /* Button glow animation */
     .custom-btn:hover {
       background: rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        0 0 10px #fff,
+        0 0 20px #fff,
+        0 0 30px #fff;
+      transform: scale(1.05);
     }
   </style>
 </head>
