@@ -19,7 +19,7 @@
       color: white;
     }
 
-    /* Top menu */
+    /* Top menu (fit to buttons only) */
     .menu {
       position: fixed;
       top: 20px;
@@ -31,11 +31,11 @@
       backdrop-filter: blur(10px);
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 10px 20px;
+      padding: 10px;
+      width: fit-content; /* <-- Menu width fits buttons */
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
-    /* Menu buttons */
     .menu-btn {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(8px);
@@ -63,6 +63,7 @@
       text-align: center;
       text-shadow: 0 0 20px white, 0 0 40px white;
       animation: glow 3s infinite alternate;
+      margin-top: 120px;
     }
 
     @keyframes glow {
@@ -73,6 +74,8 @@
     /* Search bar */
     .search-container {
       margin-top: 20px;
+      width: 80%;
+      max-width: 600px;
     }
 
     .search-form {
