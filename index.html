@@ -26,7 +26,7 @@
       top: 25px;
       left: 50%;
       transform: translateX(-50%);
-      width: 350px;
+      width: 400px;
       height: 60px;
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
@@ -36,6 +36,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 15px;
       animation: borderGlow 2s infinite alternate;
     }
 
@@ -52,12 +53,12 @@
       }
     }
 
-    /* Squircle home button */
+    /* Squircle buttons in menu */
     .menu-button {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       border: none;
-      border-radius: 12px; /* slight round edges for squircle */
+      border-radius: 12px; /* squircle */
       padding: 12px 16px;
       cursor: pointer;
       display: flex;
@@ -155,10 +156,13 @@
   </style>
 </head>
 <body>
-  <!-- Top Menu with Squircle Home Button -->
+  <!-- Top Menu with Home & Games buttons -->
   <div class="menu">
     <button class="menu-button" onclick="location.href='index.html';">
-      <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+      <i class="fa-solid fa-house"></i>
+    </button>
+    <button class="menu-button" onclick="location.href='games.html';">
+      <i class="fa-solid fa-gamepad-modern"></i>
     </button>
   </div>
 
