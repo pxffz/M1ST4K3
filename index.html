@@ -13,7 +13,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* Start from top */
+      justify-content: flex-start;
       background: url('https://4kwallpapers.com/images/wallpapers/macos-monterey-stock-black-dark-mode-layers-5k-3440x1440-5889.jpg') no-repeat center center/cover;
       font-family: 'Poppins', sans-serif;
       color: white;
@@ -22,7 +22,7 @@
     /* Top menu (fit to buttons only) */
     .menu {
       position: fixed;
-      top: 20px;
+      top: 40px; /* moved down */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -58,13 +58,13 @@
 
     /* Title */
     h1 {
-      font-size: 6rem; /* BIG title */
+      font-size: 6rem; /* big title */
       font-weight: bold;
       text-align: center;
       text-shadow: 0 0 20px white, 0 0 40px white;
       animation: glow 3s infinite alternate;
-      margin-top: 140px; /* adjust space from top */
-      margin-bottom: 20px; /* closer to search bar */
+      margin-top: 120px; /* slightly below menu */
+      margin-bottom: 20px;
     }
 
     @keyframes glow {
@@ -74,7 +74,7 @@
 
     /* Search bar */
     .search-container {
-      margin-top: 0; /* moved a bit up */
+      margin-top: 0;
       width: 80%;
       max-width: 600px;
     }
