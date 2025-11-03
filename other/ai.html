@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local AI Hub</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #111; color: #eee; margin:0; padding:0;}
+  header { background: #1a1a1a; padding: 20px; text-align: center; border-bottom: 2px solid #4CAF50;}
+  header h1 { color: #4CAF50; margin:0; }
+  main { display:flex; flex-direction: column; align-items:center; padding:20px; }
+  #chatBox { width: 90%; max-width: 600px; height: 400px; background:#222; border:1px solid #444; overflow-y:auto; padding:10px; margin-bottom:10px; }
+  #chatBox p { margin:5px 0; }
+  .user { color:#0f0; }
+  .ai { color:#4CAF50; }
+  #inputSection { display:flex; width:90%; max-width:600px; }
+  #prompt { flex:1; padding:10px; border:none; outline:none; background:#333; color:#eee; }
+  #sendBtn { padding:10px; background:#4CAF50; border:none; color:#fff; cursor:pointer; }
+  #tools { margin-top:20px; width:90%; max-width:600px; }
+  #tools button { margin:5px; padding:10px; background:#333; border:1px solid #4CAF50; color:#4CAF50; cursor:pointer; }
+  footer { text-align:center; padding:10px; border-top:2px solid #4CAF50; margin-top:20px; color:#aaa; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Local AI Hub 🤖</h1>
+</header>
+
+<main>
+  <div id="chatBox"></div>
+  <div id="inputSection">
+    <input type="text" id="prompt" placeholder="Ask me anything...">
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <div id="tools">
+    <h2>AI Tools</h2>
+    <button onclick="toolAction('Homework Helper')">Homework Helper</button>
+    <button onclick="toolAction('Idea Generator')">Idea Generator</button>
+    <button onclick="toolAction('Random Fun Fact')">Random Fun Fact</button>
+  </div>
+</main>
+
+<footer>
+  Made with ❤️ by You • 100% Local AI
+</footer>
+
+<script>
+// Chat history
+const chatBox = document.getElementById('chatBox');
+const promptInput = document.getElementById('prompt');
+const sendBtn = document.getElementById('sendBtn');
+
+// Mock AI response generator
+function mockAIResponse(prompt, tool = "Chatbot") {
+  prompt = prompt.toLowerCase();
+  // Homework helper
+  if(tool === "Homework Helper") {
+    return `Here's a helpful tip for your homework: Try breaking "${prompt}" into smaller parts and solve step by step!`;
+  }
+  // Idea Generator
+  if(tool === "Idea Generator") {
+    const ideas = [
+      "Create a mini game using JavaScript.",
+      "Start a small blog about your favorite hobby.",
+      "Design a simple mobile app concept.",
+      "Write a short story inspired by your favorite song."
+    ];
+    return ideas[Math.floor(Math.random()*ideas.length)];
+  }
+  // Random Fun Fact
+  if(tool === "Random Fun Fact") {
+    const facts = [
+      "Octopuses have three hearts.",
+      "Bananas are berries, but strawberries aren't.",
+      "There are more stars in the universe than grains of sand on Earth.",
+      "Honey never spoils."
+    ];
+    return facts[Math.floor(Math.random()*facts.length)];
+  }
+  // General chat
+  if(prompt.includes("hello") || prompt.includes("hi")) return "Hello there! How can I help you today?";
+  if(prompt.includes("how are you")) return "I'm a local AI hub, always ready to assist!";
+  if(prompt.includes("your name")) return "I am your Local AI Hub 🤖";
+  return `I see you asked: "${prompt}". I'm a local AI, so this is a simulated response.`;
+}
+
+// Add message to chat box
+function addMessage(text, sender="ai") {
+  const p = document.createElement('p');
+  p.className = sender;
+  p.textContent = text;
+  chatBox.appendChild(p);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Handle sending prompt
+sendBtn.onclick = () => {
+  const userText = promptInput.value.trim();
+  if(!userText) return;
+  addMessage(userText, "user");
+  promptInput.value = "";
+  setTimeout(()=> {
+    const aiText = mockAIResponse(userText);
+    addMessage(aiText, "ai");
+  }, 500);
+}
+
+// Tools
+function toolAction(toolName) {
+  const aiText = mockAIResponse("", toolName);
+  addMessage(`${toolName}: ${aiText}`, "ai");
+}
+
+// Enter key to send
+promptInput.addEventListener("keydown", (e)=> {
+  if(e.key === "Enter") sendBtn.click();
+});
+</script>
+
+</body>
+</html>
