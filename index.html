@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M1ST4K3</title>
+  <!-- Font Awesome for magnifying glass -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://4kwallpapers.com/images/wallpapers/macos-monterey-stock-black-dark-mode-layers-5k-3440x1440-5889.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Title styling */
+    h1 {
+      color: #fff;
+      font-size: 6em;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #fff;
+      animation: shine 2s infinite alternate;
+      margin-bottom: 50px;
+    }
+
+    @keyframes shine {
+      0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
+      100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+    }
+
+    /* Search bar container */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      width: 60%;
+      max-width: 700px;
+    }
+
+    .search-bar {
+      flex: 1;
+      padding: 15px 20px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 1.1em;
+    }
+
+    .search-bar::placeholder {
+      color: #fff;
+      opacity: 0.8;
+    }
+
+    .custom-btn {
+      margin-left: 10px;
+      border-radius: 50%;
+      border: none;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .custom-btn i {
+      color: #fff;
+      font-size: 1.2em;
+    }
+
+    .custom-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <h1>M1ST4K3</h1>
+
+  <!-- UV proxy search bar -->
+  <div class="search-container">
+    <form id="uv-form" class="search-form" onsubmit="return uvSearch(this);">
+      <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden"/> 
+      <input id="uv-address" type="text" placeholder="Type A URL or Website" class="search-bar"/>
+      <button type="submit" class="custom-btn btn-squircle">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- UV proxy scripts -->
+  <script src="/active/uv/uv.bundle.js" charset="UTF-8" defer></script>
+  <script src="/active/uv/uv.config.js" charset="UTF-8" defer></script>
+  <script src="/active/register-sw.js" charset="UTF-8" defer></script>
+  <script src="/active/search.js" charset="UTF-8" defer></script>
+  <script src="/active/index.js" charset="UTF-8" defer></script>
+</body>
+</html>
