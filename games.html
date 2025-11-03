@@ -43,7 +43,7 @@
     }
 
     .menu-button {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       border: none;
       border-radius: 12px;
@@ -53,7 +53,7 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
-      box-shadow: 0 0 6px rgba(255,255,255,0.2);
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
     }
 
     .menu-button i { color: #fff; font-size: 1.3em; transition: all 0.3s ease; }
@@ -73,7 +73,6 @@
 
     @keyframes shine { 0% {text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;} 100% {text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;} }
 
-    /* Game container using flex grid */
     .games-container {
       display: flex;
       flex-wrap: wrap;
@@ -115,21 +114,23 @@
 
   <!-- Top Menu -->
   <div class="menu">
-    <button class="menu-button" onclick="location.href='index.html';"><i class="fa-solid fa-house"></i></button>
-    <button class="menu-button" onclick="location.href='games.html';"><i class="fa-solid fa-gamepad-modern"></i></button>
+    <button class="menu-button" onclick="location.href='index.html';">
+      <i class="fa-solid fa-house"></i>
+    </button>
+    <button class="menu-button" onclick="location.href='games.html';">
+      <i class="fa-solid fa-gamepad"></i>
+    </button>
   </div>
 
   <h1>G4M3S</h1>
 
   <!-- Games Container -->
   <div class="games-container">
-    <!-- Example game card -->
-    <div class="game-card" onclick="openGame('https://example.com/')">
+    <div class="game-card" onclick="openGame('https://example-game-url.com')">
       <img src="https://via.placeholder.com/120" alt="Game Example">
       <span>Mini Game</span>
     </div>
-
-    <!-- To add more games: just copy/paste the div above and change the image, title, and URL -->
+    <!-- Add more games here by copying the game-card div -->
   </div>
 
   <script>
