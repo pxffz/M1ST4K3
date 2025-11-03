@@ -39,7 +39,6 @@
       animation: borderGlow 2s infinite alternate;
     }
 
-    /* Subtle border shine animation */
     @keyframes borderGlow {
       0% {
         box-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
@@ -53,12 +52,12 @@
       }
     }
 
-    /* Menu button */
+    /* Squircle home button */
     .menu-button {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       border: none;
-      border-radius: 50%;
+      border-radius: 12px; /* slight round edges for squircle */
       padding: 12px 16px;
       cursor: pointer;
       display: flex;
@@ -74,7 +73,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Hover effect: button lifts and glows slightly */
     .menu-button:hover {
       transform: translateY(-5px);
       box-shadow: 0 0 12px #fff, 0 0 20px #fff;
@@ -86,10 +84,7 @@
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
-      text-shadow: 
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
       animation: shine 2s infinite alternate;
       margin-bottom: 50px;
       margin-top: 120px;
@@ -154,16 +149,13 @@
 
     .custom-btn:hover {
       background: rgba(255, 255, 255, 0.25);
-      box-shadow: 
-        0 0 10px #fff,
-        0 0 20px #fff,
-        0 0 30px #fff;
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
       transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <!-- Top Menu with Home Button -->
+  <!-- Top Menu with Squircle Home Button -->
   <div class="menu">
     <button class="menu-button" onclick="location.href='index.html';">
       <i class="fa-solid fa-house" style="color: #ffffff;"></i>
