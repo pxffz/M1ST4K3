@@ -1,134 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>M1ST4K3</title>
-  <!-- Font Awesome Free -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
+      padding: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background: url('https://4kwallpapers.com/images/wallpapers/macos-monterey-stock-black-dark-mode-layers-5k-3440x1440-5889.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
+      justify-content: center;
+      background: url('https://4kwallpapers.com/images/wallpapers/macos-monterey-stock-black-dark-mode-layers-5k-3440x1440-5889.jpg') no-repeat center center/cover;
+      font-family: 'Poppins', sans-serif;
+      color: white;
     }
 
-    /* Top menu bar */
+    /* Top menu */
     .menu {
       position: fixed;
-      top: 25px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      width: 400px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
       display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 15px;
-      animation: borderGlow 2s infinite alternate;
-    }
-
-    @keyframes borderGlow {
-      0% { box-shadow: 0 0 6px rgba(255,255,255,0.25),0 0 10px rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
-      100% { box-shadow: 0 0 10px rgba(255,255,255,0.4),0 0 20px rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
-    }
-
-    .menu-button {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
-      border: none;
       border-radius: 12px;
-      padding: 12px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 10px 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     }
 
-    .menu-button i { color: #fff; font-size: 1.3em; transition: all 0.3s ease; }
-    .menu-button:hover { transform: translateY(-5px); box-shadow: 0 0 12px #fff,0 0 20px #fff; }
+    /* Menu buttons */
+    .menu-btn {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
+    .menu-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 8px white;
+    }
+
+    .menu-btn i {
+      color: #ffffff;
+      font-size: 18px;
+    }
+
+    /* Title */
     h1 {
-      color: #fff;
-      font-size: 6em;
+      font-size: 4rem;
       font-weight: bold;
       text-align: center;
-      text-transform: uppercase;
-      text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;
-      animation: shine 2s infinite alternate;
-      margin-bottom: 50px;
-      margin-top: 120px;
+      text-shadow: 0 0 20px white, 0 0 40px white;
+      animation: glow 3s infinite alternate;
     }
 
-    @keyframes shine { 0% {text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;} 100% {text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;} }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px white, 0 0 20px white; }
+      to { text-shadow: 0 0 25px white, 0 0 45px white; }
+    }
 
-    .search-container { display: flex; justify-content: center; width: 100%; }
+    /* Search bar */
+    .search-container {
+      margin-top: 20px;
+    }
 
-    .search-form { display: flex; align-items: center; width: 60%; max-width: 700px; }
+    .search-form {
+      display: flex;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 5px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
 
     .search-bar {
       flex: 1;
-      padding: 15px 20px;
-      border-radius: 50px;
+      padding: 10px;
       border: none;
       outline: none;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      color: #fff;
-      font-size: 1.1em;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      background: transparent;
+      color: white;
+    }
+
+    .custom-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      cursor: pointer;
+      padding: 8px 12px;
       transition: 0.3s;
     }
 
-    .search-bar::placeholder { color: #fff; opacity: 0.8; }
-
-    .custom-btn {
-      margin-left: 10px;
-      border-radius: 50%;
-      border: none;
-      padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      transition: all 0.3s ease;
+    .custom-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 10px white;
     }
 
-    .custom-btn i { color: #fff; font-size: 1.2em; }
-    .custom-btn:hover { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 10px #fff,0 0 20px #fff,0 0 30px #fff; transform: scale(1.05); }
+    .custom-btn i {
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <!-- Top Menu with Home & Games buttons -->
+  <!-- Menu -->
   <div class="menu">
-    <button class="menu-button" onclick="location.href='index.html';">
+    <button class="menu-btn" onclick="window.location.href='index.html'">
       <i class="fa-solid fa-house"></i>
     </button>
-    <button class="menu-button" onclick="location.href='games.html';">
+    <button class="menu-btn" onclick="window.location.href='games.html'">
       <i class="fa-solid fa-gamepad"></i>
     </button>
   </div>
 
+  <!-- Title -->
   <h1>M1ST4K3</h1>
 
-  <!-- UV proxy search bar -->
+  <!-- Search bar -->
   <div class="search-container">
     <form id="uv-form" class="search-form" onsubmit="return uvSearch(this);">
       <input id="uv-search-engine" value="https://duckduckgo.com/?q=%s" type="hidden"/> 
