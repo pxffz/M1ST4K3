@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M1ST4K3</title>
-  <!-- Font Awesome v6 -->
+  <!-- Font Awesome Free -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
@@ -41,24 +41,15 @@
     }
 
     @keyframes borderGlow {
-      0% {
-        box-shadow: 0 0 6px rgba(255, 255, 255, 0.25),
-                    0 0 10px rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-      100% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4),
-                    0 0 20px rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.5);
-      }
+      0% { box-shadow: 0 0 6px rgba(255,255,255,0.25),0 0 10px rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
+      100% { box-shadow: 0 0 10px rgba(255,255,255,0.4),0 0 20px rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.5); }
     }
 
-    /* Squircle buttons in menu */
     .menu-button {
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
       border: none;
-      border-radius: 12px; /* squircle */
+      border-radius: 12px;
       padding: 12px 16px;
       cursor: pointer;
       display: flex;
@@ -68,16 +59,8 @@
       box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
     }
 
-    .menu-button i {
-      color: #fff;
-      font-size: 1.3em;
-      transition: all 0.3s ease;
-    }
-
-    .menu-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 12px #fff, 0 0 20px #fff;
-    }
+    .menu-button i { color: #fff; font-size: 1.3em; transition: all 0.3s ease; }
+    .menu-button:hover { transform: translateY(-5px); box-shadow: 0 0 12px #fff,0 0 20px #fff; }
 
     h1 {
       color: #fff;
@@ -85,29 +68,17 @@
       font-weight: bold;
       text-align: center;
       text-transform: uppercase;
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+      text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;
       animation: shine 2s infinite alternate;
       margin-bottom: 50px;
       margin-top: 120px;
     }
 
-    @keyframes shine {
-      0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff; }
-      100% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
-    }
+    @keyframes shine { 0% {text-shadow:0 0 5px #fff,0 0 10px #fff,0 0 20px #fff;} 100% {text-shadow:0 0 10px #fff,0 0 20px #fff,0 0 30px #fff;} }
 
-    .search-container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
+    .search-container { display: flex; justify-content: center; width: 100%; }
 
-    .search-form {
-      display: flex;
-      align-items: center;
-      width: 60%;
-      max-width: 700px;
-    }
+    .search-form { display: flex; align-items: center; width: 60%; max-width: 700px; }
 
     .search-bar {
       flex: 1;
@@ -123,10 +94,7 @@
       transition: 0.3s;
     }
 
-    .search-bar::placeholder {
-      color: #fff;
-      opacity: 0.8;
-    }
+    .search-bar::placeholder { color: #fff; opacity: 0.8; }
 
     .custom-btn {
       margin-left: 10px;
@@ -143,16 +111,8 @@
       transition: all 0.3s ease;
     }
 
-    .custom-btn i {
-      color: #fff;
-      font-size: 1.2em;
-    }
-
-    .custom-btn:hover {
-      background: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
-      transform: scale(1.05);
-    }
+    .custom-btn i { color: #fff; font-size: 1.2em; }
+    .custom-btn:hover { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 10px #fff,0 0 20px #fff,0 0 30px #fff; transform: scale(1.05); }
   </style>
 </head>
 <body>
@@ -162,7 +122,7 @@
       <i class="fa-solid fa-house"></i>
     </button>
     <button class="menu-button" onclick="location.href='games.html';">
-      <i class="fa-solid fa-gamepad-modern"></i>
+      <i class="fa-solid fa-gamepad"></i>
     </button>
   </div>
 
