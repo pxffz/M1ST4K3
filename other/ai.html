@@ -3,120 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Local AI Hub</title>
+<title>Local AI Hub 💫 - Images Supported</title>
 <style>
-  body { font-family: Arial, sans-serif; background: #111; color: #eee; margin:0; padding:0;}
-  header { background: #1a1a1a; padding: 20px; text-align: center; border-bottom: 2px solid #4CAF50;}
-  header h1 { color: #4CAF50; margin:0; }
-  main { display:flex; flex-direction: column; align-items:center; padding:20px; }
-  #chatBox { width: 90%; max-width: 600px; height: 400px; background:#222; border:1px solid #444; overflow-y:auto; padding:10px; margin-bottom:10px; }
-  #chatBox p { margin:5px 0; }
-  .user { color:#0f0; }
-  .ai { color:#4CAF50; }
-  #inputSection { display:flex; width:90%; max-width:600px; }
-  #prompt { flex:1; padding:10px; border:none; outline:none; background:#333; color:#eee; }
-  #sendBtn { padding:10px; background:#4CAF50; border:none; color:#fff; cursor:pointer; }
-  #tools { margin-top:20px; width:90%; max-width:600px; }
-  #tools button { margin:5px; padding:10px; background:#333; border:1px solid #4CAF50; color:#4CAF50; cursor:pointer; }
-  footer { text-align:center; padding:10px; border-top:2px solid #4CAF50; margin-top:20px; color:#aaa; }
+body { font-family:'Segoe UI', sans-serif; background:#0e0e0e; color:#eee; margin:0; }
+header { background:#1b1b1b; padding:20px; text-align:center; border-bottom:3px solid #4CAF50; }
+header h1 { color:#4CAF50; margin:0; font-size:2rem; }
+main { display:flex; flex-direction: column; align-items:center; padding:20px; }
+footer { text-align:center; padding:10px; border-top:2px solid #4CAF50; color:#aaa; }
+
+#chatBox { width:90%; max-width:700px; height:450px; background:#222; border:1px solid #444; padding:15px; overflow-y:auto; border-radius:10px; box-shadow:0 0 10px #000; }
+#chatBox p { margin:8px 0; padding:10px; border-radius:10px; max-width:80%; word-wrap:break-word; opacity:0; transform:translateY(20px); transition: all 0.3s ease; }
+.user { background:#0a0a0a; color:#0f0; margin-left:auto; text-align:right; }
+.ai { background:#1a1a1a; color:#4CAF50; margin-right:auto; text-align:left; }
+
+#inputSection { display:flex; width:90%; max-width:700px; margin-top:10px; }
+#prompt { flex:1; padding:12px; border:none; outline:none; border-radius:5px 0 0 5px; background:#333; color:#eee; font-size:1rem; }
+#sendBtn { padding:12px; background:#4CAF50; border:none; border-radius:0 5px 5px 0; color:#fff; cursor:pointer; font-weight:bold; }
+
+#imageSection { margin-top:10px; width:90%; max-width:700px; display:flex; gap:10px; align-items:center; }
+#imageInput { flex:1; }
+#imageBtn { padding:10px; background:#4CAF50; border:none; color:#fff; cursor:pointer; }
+
+#tools { margin-top:20px; width:90%; max-width:700px; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+#tools button { padding:10px 15px; background:#333; border:1px solid #4CAF50; color:#4CAF50; border-radius:5px; cursor:pointer; transition: all 0.2s; }
+#tools button:hover { background:#4CAF50; color:#111; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Local AI Hub 🤖</h1>
+  <h1>Local AI Hub 💫</h1>
 </header>
 
 <main>
   <div id="chatBox"></div>
+
   <div id="inputSection">
     <input type="text" id="prompt" placeholder="Ask me anything...">
     <button id="sendBtn">Send</button>
   </div>
 
+  <div id="imageSection">
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="imageBtn">Send Image</button>
+  </div>
+
   <div id="tools">
-    <h2>AI Tools</h2>
     <button onclick="toolAction('Homework Helper')">Homework Helper</button>
     <button onclick="toolAction('Idea Generator')">Idea Generator</button>
     <button onclick="toolAction('Random Fun Fact')">Random Fun Fact</button>
+    <button onclick="toolAction('Jokes')">Jokes</button>
   </div>
 </main>
 
 <footer>
-  Made with ❤️ by You • 100% Local AI
+  made by me
 </footer>
 
 <script>
-// Chat history
+const OPENAI_KEY = "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"; // <-- To Anyone Seeing This, Please Dont Steal The API Key! I Worked Very Hard To Make This Website Work.
 const chatBox = document.getElementById('chatBox');
 const promptInput = document.getElementById('prompt');
 const sendBtn = document.getElementById('sendBtn');
+const imageInput = document.getElementById('imageInput');
+const imageBtn = document.getElementById('imageBtn');
 
-// Mock AI response generator
-function mockAIResponse(prompt, tool = "Chatbot") {
-  prompt = prompt.toLowerCase();
-  // Homework helper
-  if(tool === "Homework Helper") {
-    return `Here's a helpful tip for your homework: Try breaking "${prompt}" into smaller parts and solve step by step!`;
-  }
-  // Idea Generator
-  if(tool === "Idea Generator") {
-    const ideas = [
-      "Create a mini game using JavaScript.",
-      "Start a small blog about your favorite hobby.",
-      "Design a simple mobile app concept.",
-      "Write a short story inspired by your favorite song."
-    ];
-    return ideas[Math.floor(Math.random()*ideas.length)];
-  }
-  // Random Fun Fact
-  if(tool === "Random Fun Fact") {
-    const facts = [
-      "Octopuses have three hearts.",
-      "Bananas are berries, but strawberries aren't.",
-      "There are more stars in the universe than grains of sand on Earth.",
-      "Honey never spoils."
-    ];
-    return facts[Math.floor(Math.random()*facts.length)];
-  }
-  // General chat
-  if(prompt.includes("hello") || prompt.includes("hi")) return "Hello there! How can I help you today?";
-  if(prompt.includes("how are you")) return "I'm a local AI hub, always ready to assist!";
-  if(prompt.includes("your name")) return "I am your Local AI Hub 🤖";
-  return `I see you asked: "${prompt}". I'm a local AI, so this is a simulated response.`;
-}
-
-// Add message to chat box
 function addMessage(text, sender="ai") {
   const p = document.createElement('p');
   p.className = sender;
   p.textContent = text;
   chatBox.appendChild(p);
   chatBox.scrollTop = chatBox.scrollHeight;
+  setTimeout(()=>{ p.style.opacity = "1"; p.style.transform = "translateY(0)"; }, 10);
 }
 
-// Handle sending prompt
-sendBtn.onclick = () => {
-  const userText = promptInput.value.trim();
-  if(!userText) return;
-  addMessage(userText, "user");
-  promptInput.value = "";
-  setTimeout(()=> {
-    const aiText = mockAIResponse(userText);
-    addMessage(aiText, "ai");
-  }, 500);
+// Text prompt AI
+async function respondAI(userText) {
+  try {
+    const resp = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type":"application/json", "Authorization": `Bearer ${OPENAI_KEY}` },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [{role: "user", content: userText}],
+        max_tokens: 600
+      })
+    });
+    const data = await resp.json();
+    return data.choices[0].message.content;
+  } catch(err) {
+    console.error(err);
+    return "Error contacting OpenAI.";
+  }
 }
 
-// Tools
+// Image AI
+async function respondImage(file) {
+  try {
+    const reader = new FileReader();
+    return new Promise((resolve, reject)=>{
+      reader.onload = async () => {
+        const base64 = reader.result.split(',')[1];
+        const resp = await fetch("https://api.openai.com/v1/images/edits", {
+          method:"POST",
+          headers: { "Authorization": `Bearer ${OPENAI_KEY}` },
+          body: JSON.stringify({
+            model: "gpt-4o-mini",
+            image: base64,
+            prompt: "Describe the content of this image."
+          })
+        });
+        const data = await resp.json();
+        resolve(data.data[0].text || "No response");
+      };
+      reader.onerror = () => reject("Failed to read image.");
+      reader.readAsDataURL(file);
+    });
+  } catch(err) {
+    console.error(err);
+    return "Error processing image.";
+  }
+}
+
+// Send text
+sendBtn.onclick = async () => {
+  const text = promptInput.value.trim();
+  if(!text) return;
+  addMessage(text,"user");
+  promptInput.value="";
+  const aiText = await respondAI(text);
+  addMessage(aiText,"ai");
+};
+
+// Send image
+imageBtn.onclick = async () => {
+  const file = imageInput.files[0];
+  if(!file) return alert("Select an image first!");
+  addMessage("[Image sent]","user");
+  const aiText = await respondImage(file);
+  addMessage(aiText,"ai");
+};
+
+promptInput.addEventListener("keydown", e => { if(e.key==="Enter") sendBtn.click(); });
+
 function toolAction(toolName) {
-  const aiText = mockAIResponse("", toolName);
-  addMessage(`${toolName}: ${aiText}`, "ai");
+  let aiText = "";
+  switch(toolName){
+    case "Homework Helper": aiText="Homework tip: Break your task into smaller steps!"; break;
+    case "Idea Generator": const ideas=["Create a mini game","Start a blog","Design a mobile app","Write a short story"]; aiText=ideas[Math.floor(Math.random()*ideas.length)]; break;
+    case "Random Fun Fact": const facts=["Octopuses have three hearts.","Bananas are berries.","Honey never spoils.","More stars than grains of sand on Earth."]; aiText=facts[Math.floor(Math.random()*facts.length)]; break;
+    case "Jokes": const jokes=["Why did the math book look sad? It had too many problems.","Why do programmers prefer dark mode? Because light attracts bugs!","I told my computer I needed a break, it said 'No problem — I’ll go to sleep.'"]; aiText=jokes[Math.floor(Math.random()*jokes.length)]; break;
+  }
+  addMessage(`${toolName}: ${aiText}`,"ai");
 }
-
-// Enter key to send
-promptInput.addEventListener("keydown", (e)=> {
-  if(e.key === "Enter") sendBtn.click();
-});
 </script>
 
 </body>
